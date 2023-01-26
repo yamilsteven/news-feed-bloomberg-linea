@@ -1,0 +1,15 @@
+<div class="feed">
+    <ng-container *ngFor="let item of newData?.rss.channel.item; index as i;">
+        <div class="feed__item feed__item-{{i+1}}" *ngIf="i < 5"> <!--Limited to 5 items as it's mocking the production site-->
+            <a class="feed__anchor" target="_blank" href="{{ item.link._text }}">
+                <img loading="lazy" class="feed__media" src="{{ item['media:content']._attributes.url }}"/>
+                <h3 class="feed__content feed__title">
+                {{ item.title._cdata }}
+                </h3>
+                <p class="feed__content feed__description">
+                {{ item.description._cdata }}
+                </p>
+            </a>
+        </div>
+    </ng-container>
+</div>

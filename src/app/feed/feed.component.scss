@@ -1,0 +1,102 @@
+@import "../../styles.scss";
+
+.feed {
+    max-width: 1600px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px;
+    list-style: none;
+
+    @include from(tablet) {
+        padding: 20px 40px;
+    }
+
+    @include from(desktop) {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+        grid-column-gap: 0px;
+        grid-row-gap: 0px;
+        gap: 20px;
+        align-items: start;
+        grid-template-rows: none;
+    }
+
+    &__content {
+        color: $main-black-color;
+    }
+
+    &__description {
+        @include font-size(14);
+    }
+
+    &__title {
+        @include font-size(16);
+        margin-bottom: 10px;
+    }
+
+    &__item {
+        cursor: pointer;
+        width: 100%;
+        margin-bottom: 30px;
+
+        &:nth-child(3) {
+            border-top: 1px solid lightgray;
+            border-bottom: 1px solid lightgray;
+            padding: 20px 0;
+
+            .feed__media {
+                display: none;
+            }
+        }
+
+        &:nth-child(4) {
+            border-bottom: 1px solid lightgray;
+            padding-bottom: 0;
+
+            @include from(desktop) {
+                padding-bottom: 50px;
+            }
+
+            .feed__media {
+                display: none;
+            }
+        }
+
+        &-1 {
+            @include from(desktop) {
+                grid-area: 1 / 1 / 4 / 7;
+            }
+        }
+
+        &-2 {
+            @include from(desktop) {
+                grid-area: 1 / 7 / 3 / 10;
+            }
+        }
+
+        &-3 {
+            @include from(desktop) {
+                grid-area: 3 / 7 / 4 / 10;
+            }
+        }
+
+        &-4 {
+            @include from(desktop) {
+                grid-area: 1 / 10 / 2 / 13;
+            }
+        }
+
+        &-5 {
+            @include from(desktop) {
+                grid-area: 2 / 10 / 4 / 13;
+            }
+        }
+    }
+
+    &__media {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}
