@@ -1,0 +1,41 @@
+// Reset styles
+* {
+    padding: 0;
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+a {
+    all: unset;
+}
+
+// Variables
+// Colors
+$main-black-color: #000;
+$white: #FFF;
+
+// Breakpoints
+$bp-mobile: 300px;
+$bp-tablet: 600px;
+$bp-desktop: 1024px;
+
+$bps: (
+    'mobile': $bp-mobile,
+    'tablet': $bp-tablet,
+    'desktop': $bp-desktop
+);
+
+// Mixin for responsive
+@mixin from($media) {
+    $min-width-bp: (map-get($bps, $media) or $media);
+
+    @media only screen and (min-width: $min-width-bp) {
+        @content;
+    }
+}
+
+// Mixin for converting px to rem
+@mixin font-size($sizeValue) {
+    font-size: $sizeValue  + px;
+    font-size: ($sizeValue / 16 ) + rem;
+}
